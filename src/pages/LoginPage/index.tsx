@@ -4,6 +4,7 @@ import Input from 'components/Input';
 import logo from 'assets/image/val-logo.svg';
 
 import * as S from './styles';
+import useWindowSize from 'hooks/useWindowSize';
 
 function LoginPage() {
   return (
@@ -11,7 +12,7 @@ function LoginPage() {
       <S.LeftSide>
         <S.Header>
           <S.Logo draggable="false" src={logo} />
-          <i className="icon-help-circle" />
+          <i className="icon icon-help-circle" />
         </S.Header>
 
         <S.Headline>Sign in with your Riot Account</S.Headline>
@@ -20,7 +21,7 @@ function LoginPage() {
           <Input type="text" label="Username" />
           <Input type="password" label="Password" />
 
-          <S.RememberMeCheckbox htmlFor="remember-me-checkbox">
+          <S.RememberMeCheckbox htmlFor="remember-me-checkbox" tabIndex={0}>
             <S.CheckboxInput
               type="checkbox"
               id="remember-me-checkbox"
@@ -32,7 +33,7 @@ function LoginPage() {
           </S.RememberMeCheckbox>
 
           <S.ButtonLogin>
-            <i className="icon-arrow-right" />
+            <i className="icon icon-arrow-forward" />
           </S.ButtonLogin>
         </S.LoginForm>
 

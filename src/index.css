@@ -1,29 +1,34 @@
 @font-face {
-  font-family: "Tungsten";
-  src: local('Tungsten-Bold') local('TungstenBold') local('Tungsten') url("./assets/fonts/TungstenBold.ttf") format('truetype');
+  font-family: 'Tungsten';
+  src: local('Tungsten-Bold') local('TungstenBold') local('Tungsten')
+    url('./assets/fonts/TungstenBold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'MarkPro';
-  src: local('Mark.Pro') local('MarkPro') url('./assets/fonts/MarkPro-Regular.otf') format('opentype');
+  src: local('Mark.Pro') local('MarkPro')
+    url('./assets/fonts/MarkPro-Regular.otf') format('opentype');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'MarkPro';
-  src: local('Mark.Pro.Medium') local('MarkProMedium') url('./assets/fonts/MarkPro-Medium.otf') format('opentype');
+  src: local('Mark.Pro.Medium') local('MarkProMedium')
+    url('./assets/fonts/MarkPro-Medium.otf') format('opentype');
   font-weight: 500;
 }
 
 @font-face {
   font-family: 'MarkPro';
-  src: local('Mark.Pro.Bold') local('MarkProBold') url('./assets/fonts/MarkPro-Bold.otf') format('opentype');
+  src: local('Mark.Pro.Bold') local('MarkProBold')
+    url('./assets/fonts/MarkPro-Bold.otf') format('opentype');
   font-weight: 600;
 }
 
 @font-face {
   font-family: 'MarkPro';
-  src: local('Mark.Pro.Heavy') local('MarkProHeavy') url('./assets/fonts/MarkPro-Heavy.otf') format('opentype');
+  src: local('Mark.Pro.Heavy') local('MarkProHeavy')
+    url('./assets/fonts/MarkPro-Heavy.otf') format('opentype');
   font-weight: 700;
 }
 
@@ -39,7 +44,10 @@ body {
   height: 100vh;
 }
 
-body, input, select, button {
+body,
+input,
+select,
+button {
   font-family: 'MarkPro', sans-serif;
   font-weight: 400;
 }
@@ -175,4 +183,13 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+i[class^='icon-'],
+i[class*='icon-'] {
+  font-size: 24px;
+}
+
+a {
+  text-decoration: none;
 }

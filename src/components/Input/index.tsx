@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { InputHTMLAttributes, useState, useRef } from 'react';
 
-interface InputProps {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   type?: string;
   disabled?: boolean;
   placeholder?: string;
   label?: string;
-  onFocus?: () => void;
-  onBlur?: () => void;
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+	onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 import * as S from './styles';
@@ -18,28 +19,46 @@ function Input({
   label = 'Input label',
   onFocus,
   onBlur,
+	onChange,
   ...props
 }: InputProps) {
-  function handleFocus() {
-    if (onFocus) onFocus();
+	const [labelShouldGoUp, setLabelShouldGoUp] = useState(false);
+	const inputRef = useRef(null);
+
+ 	function handleFocus(evt: React.FocusEvent<HTMLInputElement>) {
+    if (onFocus) onFocus(evt);
+
+		setLabelShouldGoUp(true);
   }
 
-  function handleBlur() {
-    if (onBlur) onBlur();
+	function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
+		if (onChange) onChange(evt);
+	}
+
+  function handleBlur(evt: React.FocusEvent<HTMLInputElement>) {
+    if (onBlur) onBlur(evt);
+
+		if (evt.target.value.trim() === '') {
+			setLabelShouldGoUp(false);
+
+			inputRef.current.value = '';
+		}
   }
 
   return (
     <S.Wrapper>
       <S.Input
+				ref={inputRef}
         type={type}
         placeholder={placeholder}
         disabled={disabled}
         onFocus={handleFocus}
+				onChange={handleChange}
         onBlur={handleBlur}
         {...props}
       />
 
-      <S.Label className="no-select">{label}</S.Label>
+      <S.Label className="no-select" shouldGoUp={labelShouldGoUp}>{label}</S.Label>
     </S.Wrapper>
   );
 }
