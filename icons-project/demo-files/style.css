@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'valoweb-icons';
-  src:  url('fonts/valoweb-icons.eot?u0qa9y');
-  src:  url('fonts/valoweb-icons.eot?u0qa9y#iefix') format('embedded-opentype'),
-    url('fonts/valoweb-icons.ttf?u0qa9y') format('truetype'),
-    url('fonts/valoweb-icons.woff?u0qa9y') format('woff'),
-    url('fonts/valoweb-icons.svg?u0qa9y#valoweb-icons') format('svg');
+  src:  url('fonts/valoweb-icons.eot?tisrsk');
+  src:  url('fonts/valoweb-icons.eot?tisrsk#iefix') format('embedded-opentype'),
+    url('fonts/valoweb-icons.ttf?tisrsk') format('truetype'),
+    url('fonts/valoweb-icons.woff?tisrsk') format('woff'),
+    url('fonts/valoweb-icons.svg?tisrsk#valoweb-icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-logo-apple:before {
+  content: "\e907";
+}
+.icon-logo-facebook:before {
+  content: "\e908";
+}
+.icon-logo-google:before {
+  content: "\e909";
+}
+.icon-logo-xbox:before {
+  content: "\e90a";
+}
 .icon-arrow-forward:before {
   content: "\e900";
 }
