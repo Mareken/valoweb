@@ -1,0 +1,10 @@
+{
+  "login.headline": "Ingresar",
+  "login.userInput": "Nombre de usuario",
+  "login.passwordInput": "Contraseña",
+  "login.rememberMeCheckbox": "Permanecer conectado",
+  "login.cantLogin": "¿No puedes iniciar sesión?",
+  "login.createAccount": "Crea una cuenta",
+  "langModal.heading": "Cambiar de idioma",
+  "footer.disclaimer": "Esta aplicacion está protegida por HCaptcha y sus <a href='https://www.hcaptcha.com/privacy' rel='noreferrer' target='_blank' rel='noreferrer' target='_blank'>aviso de privacidad</a> y <a href='https://www.hcaptcha.com/terms' rel='noreferrer' target='_blank'>terminios de servicio</a> son aplicables."
+}

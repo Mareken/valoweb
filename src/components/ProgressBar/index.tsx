@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-interface ProgressBarProps {
+interface IProgressBarProps {
   size?: number;
   progress?: number;
   trackWidth?: number;
@@ -28,7 +28,7 @@ function ProgressBar({
   labelColor = `#333`,
   spinnerMode = false,
   spinnerSpeed = 1
-}: ProgressBarProps) {
+}: IProgressBarProps) {
   const center = useMemo(() => size / 2, [size]);
   const radius = useMemo(
     () => center - (trackWidth > indicatorWidth ? trackWidth : indicatorWidth),

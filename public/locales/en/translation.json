@@ -1,0 +1,10 @@
+{
+  "login.headline": "Sign in",
+  "login.userInput": "Username",
+  "login.passwordInput": "Password",
+  "login.rememberMeCheckbox": "Stay signed in",
+  "login.cantLogin": "Can't sign in?",
+  "login.createAccount": "Create account",
+  "langModal.heading": "Switch language",
+  "footer.disclaimer": "This app is protected by HCaptcha and its <a href='https://www.hcaptcha.com/privacy' rel='noreferrer' target='_blank'>privacy policy</a> and <a href='https://www.hcaptcha.com/terms' rel='noreferrer' target='_blank'>terms of service</a> apply."
+}
