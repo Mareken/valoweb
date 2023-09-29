@@ -1,14 +1,18 @@
-import { Grid, User } from 'lucide-react';
+import { LayoutGrid, User } from 'lucide-react';
 import React from 'react';
 
 import * as S from './styles';
+import GameTile from './components/GameTile';
 
 function MainClient() {
+	const gamesList = ['lol', 'tft', 'val'];
+	const gamesGrid = ['lol', 'wr', 'lor', 'tft', 'val'];
+
   return (
     <S.Container>
       <S.Header>
         <S.RoundedButton>
-          <Grid />
+          <LayoutGrid />
         </S.RoundedButton>
         <S.RoundedButton>
           <User />
@@ -18,11 +22,7 @@ function MainClient() {
       <S.MyGamesSection>
         <S.SectionTitle>Meus jogos</S.SectionTitle>
         <S.MyGamesContainer>
-          <S.GameTile>
-            <S.GameThumb>
-              <S.GameThumbInner src={lolIcon} />
-            </S.GameThumb>
-          </S.GameTile>
+          {gamesList.map(game => <GameTile game={game} key={game} />)}
         </S.MyGamesContainer>
       </S.MyGamesSection>
     </S.Container>
