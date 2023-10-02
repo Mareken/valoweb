@@ -97,6 +97,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
+  overflow: hidden;
 }
 
 body,
@@ -114,6 +115,7 @@ button {
 
 #root {
   height: 100%;
+  overflow: hidden;
 }
 
 .no-select {

@@ -7,6 +7,9 @@ import { useNavigate } from 'react-router-dom';
 import logo from 'assets/image/riot-logo.svg';
 
 import BrandButton from 'components/BrandButton';
+import Checkbox from 'components/Checkbox';
+import LanguageModal from 'components/LanguageModal';
+import SuperMasterAlert from 'components/SuperMasterAlert';
 import { AnimatePresence } from 'framer-motion';
 import { ArrowRight, Globe, User } from 'lucide-react';
 import * as S from './styles';
@@ -17,21 +20,33 @@ function LoginPage() {
 
   const [canLogin, setCanLogin] = useState(false);
   const [isLogging, setIsLogging] = useState(false);
-  const [rememberCrendentials, setRememberCredentials] = useState(false);
+  const [rememberCredentials, setRememberCredentials] = useState(false);
   const [languageModalOpen, setLanguageModalOpen] = useState(false);
+  const [showAttentionAlert, setShowAttentionAlert] = useState(false);
   const [credentials, setCredentials] = useState({
     user: '',
     password: ''
   });
 
-  const languages = useMemo(
-    () => [
-      { key: 'pt-BR', label: 'Português (BR)' },
-      { key: 'es', label: 'Español' },
-      { key: 'en', label: 'English' }
-    ],
-    []
-  );
+  useEffect(() => {
+    const savedCredentials = localStorage.getItem('valoweb');
+    if (savedCredentials) {
+      setCredentials(JSON.parse(savedCredentials));
+    }
+  }, []);
+
+  useEffect(() => {
+    const attentionAlert = localStorage.getItem(
+      'valoweb-show_super_master_alert'
+    );
+    if (attentionAlert) {
+      setShowAttentionAlert(false);
+    } else {
+      setTimeout(() => {
+        setShowAttentionAlert(true);
+      }, 200);
+    }
+  }, []);
 
   const loginMethods = useMemo(
     () => ['facebook', 'google', 'apple', 'xbox'],
@@ -46,10 +61,6 @@ function LoginPage() {
     }
   }, [credentials]);
 
-  function handleChangeLanguage(lng: string) {
-    i18n.changeLanguage(lng);
-  }
-
   function handleInputChange(
     evt: React.ChangeEvent<HTMLInputElement>,
     field: string
@@ -62,7 +73,13 @@ function LoginPage() {
     }));
   }
 
-  function redirectToClient() {
+  function login() {
+    if (rememberCredentials) {
+      localStorage.setItem('valoweb', JSON.stringify(credentials));
+    } else {
+      if (localStorage.getItem('valoweb')) localStorage.removeItem('valoweb');
+    }
+
     navigate('/client');
   }
 
@@ -97,6 +114,7 @@ function LoginPage() {
         opacity: 0,
         transition: { ease: [0.785, 0.135, 0.15, 0.86], duration: 0.4 }
       }}
+      key="login-page"
     >
       <S.LeftSide>
         <S.Logo draggable="false" src={logo} />
@@ -110,12 +128,13 @@ function LoginPage() {
               }}
               exit={{
                 opacity: 0,
-                scale: 0.95
+                scale: 0.98
               }}
               transition={{
                 ease: 'easeOut',
                 duration: 0.15
               }}
+              key="wrapper-div"
             >
               <S.Headline>{t('login.headline')}</S.Headline>
 
@@ -139,23 +158,14 @@ function LoginPage() {
                   ))}
                 </S.LoginAltButtons>
 
-                <S.RememberMeCheckbox
-                  htmlFor="remember-me-checkbox"
-                  tabIndex={0}
-                >
-                  <S.CheckboxInput
-                    type="checkbox"
-                    id="remember-me-checkbox"
-                    checked={rememberCrendentials}
-                    onChange={() =>
-                      setRememberCredentials((prevState) => !prevState)
-                    }
-                  />
-                  <S.CheckboxBox />
-                  <S.CheckboxLabel>
-                    {t('login.rememberMeCheckbox')}
-                  </S.CheckboxLabel>
-                </S.RememberMeCheckbox>
+                <Checkbox
+                  id="remember-me-checkbox"
+                  label={t('login.rememberMeCheckbox')}
+                  checked={rememberCredentials}
+                  onChange={() =>
+                    setRememberCredentials((prevState) => !prevState)
+                  }
+                />
               </S.LoginForm>
             </S.WrapperDiv>
           )}
@@ -170,8 +180,9 @@ function LoginPage() {
                 duration: 0.15,
                 delay: 0.3
               }}
+              key="login-loader-wrapper"
             >
-              <S.LoginLoader onAnimationEnd={redirectToClient} />
+              <S.LoginLoader onAnimationEnd={login} />
             </S.LoginLoaderWrapper>
           )}
         </AnimatePresence>
@@ -194,9 +205,10 @@ function LoginPage() {
                   duration: 0.15
                 }}
                 onClick={() => setIsLogging(true)}
+                key="button-login"
               >
                 <ArrowRight
-                  color="#E8E8E8"
+                  color={canLogin ? '#f9f9f9' : '#E8E8E8'}
                   size="2rem"
                   className="button-login-icon"
                 />
@@ -228,86 +240,28 @@ function LoginPage() {
       <S.RightSide>
         <S.RightSideButtons>
           <S.RoundedButton onClick={(evt) => evt.preventDefault()}>
-            <User color="#A2A4AA" />
+            <User color=" #191307" />
           </S.RoundedButton>
           <S.RoundedButton
             onClick={() => setLanguageModalOpen(true)}
             highlight={languageModalOpen}
           >
-            <Globe color="#A2A4AA" />
+            <Globe color=" #191307" />
           </S.RoundedButton>
         </S.RightSideButtons>
 
         <AnimatePresence mode="wait">
           {languageModalOpen && (
-            <>
-              <S.Overlay
-                initial={{
-                  opacity: 0,
-                  pointerEvents: 'none'
-                }}
-                animate={{
-                  opacity: 0.5,
-                  pointerEvents: 'auto',
-                  transition: {
-                    duration: 0.15
-                  }
-                }}
-                exit={{
-                  opacity: 0,
-                  pointerEvents: 'none',
-                  transition: {
-                    duration: 0.1
-                  }
-                }}
-                key="languageOverlay"
-                onClick={() => setLanguageModalOpen(false)}
-              />
+            <LanguageModal
+              key="lang-modal-login"
+              onClose={() => setLanguageModalOpen(false)}
+            />
+          )}
+        </AnimatePresence>
 
-              <S.LangModal
-                initial={{
-                  x: '-50%',
-                  y: '-50%',
-                  pointerEvents: 'none',
-                  scale: 1.02,
-                  opacity: 0
-                }}
-                animate={{
-                  x: '-50%',
-                  y: '-50%',
-                  pointerEvents: 'auto',
-                  scale: 1,
-                  opacity: 1,
-                  transition: {
-                    duration: 0.15,
-                    delay: 0.1
-                  }
-                }}
-                exit={{
-                  x: '-50%',
-                  y: '-50%',
-                  pointerEvents: 'none',
-                  scale: 1,
-                  opacity: 0,
-                  transition: {
-                    duration: 0.1
-                  }
-                }}
-                key="languageModal"
-              >
-                <S.ModalHeading>{t('langModal.heading')}</S.ModalHeading>
-
-                {languages.map((lang) => (
-                  <S.ButtonChangeLanguage
-                    onClick={() => handleChangeLanguage(lang.key)}
-                    selected={i18n.language === lang.key}
-                  >
-                    <S.Radio selected={i18n.language === lang.key} />
-                    <S.Language>{lang.label}</S.Language>
-                  </S.ButtonChangeLanguage>
-                ))}
-              </S.LangModal>
-            </>
+        <AnimatePresence mode="wait">
+          {showAttentionAlert && (
+            <SuperMasterAlert onClose={() => setShowAttentionAlert(false)} />
           )}
         </AnimatePresence>
       </S.RightSide>

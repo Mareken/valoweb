@@ -6,5 +6,16 @@
   "login.cantLogin": "Não consegue iniciar sessão?",
   "login.createAccount": "Criar conta",
   "langModal.heading": "Mudar idioma",
-  "footer.disclaimer": "Este aplicativo é protegido por HCaptcha. A <a href='https://www.hcaptcha.com/privacy' rel='noreferrer' target='_blank'>política de privacidade</a> e os <a href='https://www.hcaptcha.com/terms' rel='noreferrer' target='_blank'>termos de serviço</a> são aplicáveis."
+  "footer.disclaimer": "Este aplicativo é protegido por HCaptcha. A <a href='https://www.hcaptcha.com/privacy' rel='noreferrer' target='_blank'>política de privacidade</a> e os <a href='https://www.hcaptcha.com/terms' rel='noreferrer' target='_blank'>termos de serviço</a> são aplicáveis.",
+  "superAlert.title": "Opa 👋",
+  "superAlert.content": "Este projeto é apenas para prática e diversão. Não use suas credenciais reais da Riot aqui. Digite qualquer coisa para 'entrar'.",
+  "superAlert.checkbox": "Não mostrar isso novamente",
+  "superAlert.button": "Fechar",
+  "mainClient.myGames": "Meus jogos",
+  "mainClient.allGames": "Todos os jogos",
+  "mainClient.convergenceSectionTitle": "Eventos Especiais",
+  "mainClient.convergenceTitle": "CONV/RGENCE: A League of Legends Story",
+  "mainClient.convergenceContent": "CONV/RGENCE: A League of Legends Story é um jogo de ação em plataforma 2D para um jogador que apresenta combate dinâmico e mecânicas de exploração originais graças às habilidades de viagem espaçotemporal de Ekko. Rebobine suas ações para aprender com os erros e superar cada novo inimigo. Será possível salvar o futuro de Zaun?",
+  "mainClient.convergenceBuyNow": "Comprar agora",
+  "mainClient.convergence": "Saiba mais"
 }

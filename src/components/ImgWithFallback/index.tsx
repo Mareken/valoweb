@@ -15,7 +15,7 @@ function ImgWithFallback({
   return (
     <picture>
       <source srcSet={src} type={type} />
-      <img src={fallback} {...props} />
+      <img src={fallback} {...props} draggable="false" />
     </picture>
   );
 }

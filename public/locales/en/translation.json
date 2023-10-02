@@ -6,5 +6,16 @@
   "login.cantLogin": "Can't sign in?",
   "login.createAccount": "Create account",
   "langModal.heading": "Switch language",
-  "footer.disclaimer": "This app is protected by HCaptcha and its <a href='https://www.hcaptcha.com/privacy' rel='noreferrer' target='_blank'>privacy policy</a> and <a href='https://www.hcaptcha.com/terms' rel='noreferrer' target='_blank'>terms of service</a> apply."
+  "footer.disclaimer": "This app is protected by HCaptcha and its <a href='https://www.hcaptcha.com/privacy' rel='noreferrer' target='_blank'>privacy policy</a> and <a href='https://www.hcaptcha.com/terms' rel='noreferrer' target='_blank'>terms of service</a> apply.",
+  "superAlert.title": "Oy 👋",
+  "superAlert.content": "This is a project for fun. DON'T use your real Riot credentials here. Just type anything to 'sign in'.",
+  "superAlert.checkbox": "Do not show me this again",
+  "superAlert.button": "Close",
+  "mainClient.myGames": "My Games",
+  "mainClient.allGames": "All Games",
+  "mainClient.convergenceSectionTitle": "Special Events",
+  "mainClient.convergenceTitle": "CONVERGENCE: A League of Legends Story",
+  "mainClient.convergenceContent": "CONVERGENCE: A League Of Legends Story is a story-driven, single-player 2D action platformer featuring dynamic combat and unique exploration opportunities thanks to Ekko's ability to travel through space and time. Rewind your actions to learn from your mistakes and outsmart each new enemy. Will it be enough to save Zaun's future?",
+  "mainClient.convergenceBuyNow": "Purchase Now",
+  "mainClient.convergence": "Learn More"
 }

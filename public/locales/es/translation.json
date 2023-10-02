@@ -6,5 +6,16 @@
   "login.cantLogin": "¿No puedes iniciar sesión?",
   "login.createAccount": "Crea una cuenta",
   "langModal.heading": "Cambiar de idioma",
-  "footer.disclaimer": "Esta aplicacion está protegida por HCaptcha y sus <a href='https://www.hcaptcha.com/privacy' rel='noreferrer' target='_blank' rel='noreferrer' target='_blank'>aviso de privacidad</a> y <a href='https://www.hcaptcha.com/terms' rel='noreferrer' target='_blank'>terminios de servicio</a> son aplicables."
+  "footer.disclaimer": "Esta aplicacion está protegida por HCaptcha y sus <a href='https://www.hcaptcha.com/privacy' rel='noreferrer' target='_blank' rel='noreferrer' target='_blank'>aviso de privacidad</a> y <a href='https://www.hcaptcha.com/terms' rel='noreferrer' target='_blank'>terminios de servicio</a> son aplicables.",
+  "superAlert.title": "Ey 👋",
+  "superAlert.content": "Este es un proyecto divertido. NO uses tus credenciales reales de Riot aquí. Simplemente escribe cualquier cosa para 'ingresar'.",
+  "superAlert.checkbox": "No volver a mostrar este mensaje ",
+  "superAlert.button": "Cerrar",
+  "mainClient.myGames": "Mis juegos",
+  "mainClient.allGames": "Todos los juegos",
+  "mainClient.convergenceSectionTitle": "Eventos especiales",
+  "mainClient.convergenceTitle": "CONVERGENCE: A League of Legends Story",
+  "mainClient.convergenceContent": "CONVERGENCE: A League of Legends Story es un juego narrativo de plataformas y acci6n en 2D de un solo jugador que presenta combates dinåmicos y oportunidades Unicas de exploraci6n usando la capacidad de Ekko de viajar en el tiempo y espacio. Rebobina tus acciones para aprender de los errores y supera a cada nuevo enemigo. ¿Será suficiente para salvar el futuro de Zaun?",
+  "mainClient.convergenceBuyNow": "Cómpralo ya",
+  "mainClient.convergence": "Más información"
 }

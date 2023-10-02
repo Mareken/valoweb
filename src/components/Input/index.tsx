@@ -1,4 +1,10 @@
-import React, { InputHTMLAttributes, useMemo, useRef, useState } from 'react';
+import React, {
+  InputHTMLAttributes,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   type?: string;
@@ -26,15 +32,25 @@ function Input({
   ...props
 }: InputProps) {
   const inputRef = useRef(null);
-  const [labelShouldGoUp, setLabelShouldGoUp] = useState(false);
+  const [labelShouldGoUp, setLabelShouldGoUp] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
   const isPasswordField = useMemo(() => type === 'password', []);
 
   function handleFocus(evt: React.FocusEvent<HTMLInputElement>) {
     if (onFocus) onFocus(evt);
     setLabelShouldGoUp(true);
+    setIsFocused(true);
   }
+
+  useEffect(() => {
+    if ((value?.trim() === '' || value == null) && !isFocused) {
+      setLabelShouldGoUp(false);
+    } else {
+      setLabelShouldGoUp(true);
+    }
+  }, [value]);
 
   function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
     if (onChange) onChange(evt);
@@ -44,6 +60,7 @@ function Input({
     if (onBlur) onBlur(evt);
 
     if (evt.target.value.trim() === '') {
+      setIsFocused(false);
       setLabelShouldGoUp(false);
       inputRef.current.value = '';
     }
@@ -75,6 +92,7 @@ function Input({
         onFocus={handleFocus}
         onChange={handleChange}
         onBlur={handleBlur}
+        value={value}
         {...props}
       />
 
