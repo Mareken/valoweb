@@ -2,7 +2,6 @@ import Input from 'components/Input';
 import React, { useEffect, useMemo, useState } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
 import logo from 'assets/image/riot-logo.svg';
 
@@ -13,10 +12,11 @@ import SuperMasterAlert from 'components/SuperMasterAlert';
 import { AnimatePresence } from 'framer-motion';
 import { ArrowRight, Globe, User } from 'lucide-react';
 import * as S from './styles';
+import useUser from '../../context/UserContext';
 
 function LoginPage() {
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
+  const { signIn } = useUser();
 
   const [canLogin, setCanLogin] = useState(false);
   const [isLogging, setIsLogging] = useState(false);
@@ -71,16 +71,6 @@ function LoginPage() {
       ...prevState,
       [field]: value
     }));
-  }
-
-  function login() {
-    if (rememberCredentials) {
-      localStorage.setItem('valoweb', JSON.stringify(credentials));
-    } else {
-      if (localStorage.getItem('valoweb')) localStorage.removeItem('valoweb');
-    }
-
-    navigate('/client');
   }
 
   const cantLoginLink = useMemo(() => {
@@ -182,7 +172,9 @@ function LoginPage() {
               }}
               key="login-loader-wrapper"
             >
-              <S.LoginLoader onAnimationEnd={login} />
+              <S.LoginLoader
+                onAnimationEnd={() => signIn(rememberCredentials, credentials)}
+              />
             </S.LoginLoaderWrapper>
           )}
         </AnimatePresence>

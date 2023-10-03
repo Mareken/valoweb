@@ -1,19 +1,12 @@
-import { AnimatePresence } from 'framer-motion';
-import LoginPage from 'pages/LoginPage';
-import MainClient from 'pages/MainClient';
 import React from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { UserProvider } from './context/UserContext';
+import AppRoutes from './routes';
 
 function App() {
-  const location = useLocation();
-
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route index element={<LoginPage />} />
-        <Route path="/client" element={<MainClient />} />
-      </Routes>
-    </AnimatePresence>
+    <UserProvider>
+      <AppRoutes />
+    </UserProvider>
   );
 }
 

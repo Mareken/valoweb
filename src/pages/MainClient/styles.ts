@@ -164,6 +164,11 @@ export const SpecialEventsTitle = styled.h6`
   font-size: 2rem;
   color: #F0F4F0;
   margin-bottom: 16px;
+	width: 50%;
+
+	@media screen and (max-width: 900px) {
+    width: 100%;
+  }
 `;
 
 export const SpecialEventsDetails = styled.div`

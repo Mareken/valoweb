@@ -6,18 +6,18 @@ import convergenceBannerWebp from 'assets/image/webp/convergence.webp';
 import LanguageModal from 'components/LanguageModal';
 import { AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import GameTile from './components/GameTile';
 import * as S from './styles';
+import useUser from '../../context/UserContext';
 
 function MainClient() {
+  const { t, i18n } = useTranslation();
+  const { signOut } = useUser();
+
   const gamesList = ['lol', 'tft', 'val'];
   const gamesGrid = ['lol', 'wr', 'lor', 'tft', 'val'];
   const [shouldLogoHide, setShouldLogoHide] = useState(false);
   const [languageModalOpen, setLanguageModalOpen] = useState(false);
-
-  const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
 
   const handleContainerScroll = useCallback(
     (evt: React.UIEvent<HTMLDivElement>) => {
@@ -31,10 +31,6 @@ function MainClient() {
     },
     []
   );
-
-  const goToLogin = () => {
-    navigate('/');
-  };
 
   const convergenceLink = useMemo(() => {
     switch (i18n.language) {
@@ -85,7 +81,7 @@ function MainClient() {
       <S.RLogo hide={shouldLogoHide ? 0 : 1} />
 
       <S.Header>
-        <S.RoundedButton onClick={goToLogin}>
+        <S.RoundedButton onClick={signOut}>
           <Power />
         </S.RoundedButton>
         <S.RoundedButton onClick={() => setLanguageModalOpen(true)}>
@@ -148,11 +144,18 @@ function MainClient() {
           <S.SpecialEventsButtons>
             <S.SpecialEventsButton
               href={`${convergenceLink}purchase/`}
+              target="_blank"
+              rel="noreferrer"
               className="primary"
             >
               {t('mainClient.convergenceBuyNow')}
             </S.SpecialEventsButton>
-            <S.SpecialEventsButton href={convergenceLink} className="secondary">
+            <S.SpecialEventsButton
+              href={convergenceLink}
+              target="_blank"
+              rel="noreferrer"
+              className="secondary"
+            >
               {t('mainClient.convergence')}
             </S.SpecialEventsButton>
           </S.SpecialEventsButtons>
