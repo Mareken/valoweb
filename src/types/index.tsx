@@ -5,6 +5,7 @@ export interface Credentials {
 
 export interface IUserContext {
   user: Credentials | null;
+  setUser: React.Dispatch<React.SetStateAction<Credentials>>;
   signIn: (saveLocal: boolean, credentials: Credentials) => void;
   signOut: () => void;
 }

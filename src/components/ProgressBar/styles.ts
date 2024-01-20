@@ -2,16 +2,16 @@ import styled, { css, keyframes } from 'styled-components';
 
 type SizeProps = {
   size: number;
-}
+};
 
 type CircleIndicatorProps = {
   isSpinner: boolean;
   animationDuration: string;
-}
+};
 
 type LabelProps = {
   labelColor: string;
-}
+};
 
 const spinner = keyframes`
   0% {
@@ -23,29 +23,30 @@ const spinner = keyframes`
 `;
 
 export const Wrapper = styled.div<SizeProps>`
-  width: ${props => props.size};
-  height: ${props => props.size};
+  width: ${(props) => props.size}px;
+  height: ${(props) => props.size}px;
   position: relative;
 `;
 
-export const Svg = styled.svg<SizeProps>`
-  @extend Wrapper;
+export const Svg = styled.svg`
   transform: rotate(-90deg);
 `;
 
 export const CircleTrack = styled.circle``;
 
 export const CircleIndicator = styled.circle<CircleIndicatorProps>`
-  animation-duration: ${props => props.animationDuration};
-  
-  ${props => props.isSpinner && css`
-    animation: spinner .75s linear infinite;
-    transform-origin: center;
-  `}
+  animation-duration: ${(props) => props.animationDuration};
+
+  ${(props) =>
+    props.isSpinner &&
+    css`
+      animation: ${spinner} 1.5s linear infinite;
+      transform-origin: center;
+    `}
 `;
 
 export const LabelContainer = styled.div<LabelProps>`
-  color: ${props => props.labelColor};
+  color: ${(props) => props.labelColor};
   position: absolute;
   top: 50%;
   left: 50%;
@@ -55,7 +56,7 @@ export const LabelContainer = styled.div<LabelProps>`
 
 export const LabelLoading = styled.span`
   display: block;
-  opacity: .5;
+  opacity: 0.5;
   font-size: 0.75em;
 `;
 

@@ -2,8 +2,8 @@ import { darken } from 'polished';
 import styled, { css } from 'styled-components';
 
 type LabelProps = {
-	shouldGoUp: boolean;
-}
+  shouldGoUp: boolean;
+};
 
 export const Input = styled.input`
   flex: 1;
@@ -12,14 +12,14 @@ export const Input = styled.input`
   padding: 12px 8px 0 8px;
   font-size: 1rem;
   color: #191307;
-  font-weight: 600;
+  font-weight: 500;
   background: transparent;
-	font-size: 1.25rem;
+  font-size: 1.25rem;
   border: none;
 
   &:focus {
     outline: none;
-		border: none;
+    border: none;
   }
 `;
 
@@ -30,14 +30,16 @@ export const Label = styled.span<LabelProps>`
   text-transform: uppercase;
   transform: translate(0, -50%) scale(1);
   color: #989898;
-  font-weight: 700;
-  transition: all .1s ease;
+  font-weight: 600;
+  transition: all 0.1s ease;
   pointer-events: none;
   transform-origin: top left;
 
-	${({ shouldGoUp }) => shouldGoUp && css`
-		transform: translate(-4px, -20px) scale(.7);
-	`}
+  ${({ shouldGoUp }) =>
+    shouldGoUp &&
+    css`
+      transform: translate(-4px, -20px) scale(0.7);
+    `}
 `;
 
 export const ButtonTogglePasswordVisibility = styled.button`
@@ -51,28 +53,28 @@ export const ButtonTogglePasswordVisibility = styled.button`
   opacity: 0;
   pointer-events: none;
   background: transparent;
-  transition: all .1s ease;
+  transition: all 0.1s ease;
   margin-right: 10px;
 
   &:hover {
-    background: #EDEDED;
+    background: #ededed;
   }
 `;
 
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  background: #EDEDED;
+  background: #ededed;
   margin-bottom: 16px;
   border-radius: 6px;
-	border: 2px solid transparent;
+  border: 2px solid transparent;
   position: relative;
-  transition: all .15s ease;
-	overflow: hidden;
-	will-change: transform;
+  transition: all 0.15s ease;
+  overflow: hidden;
+  will-change: transform;
 
   &:hover {
-		background: ${darken(.03, '#EDEDED')};
+    background: ${darken(0.03, '#EDEDED')};
   }
 
   &:focus-within {

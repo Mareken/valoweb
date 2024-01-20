@@ -11,8 +11,8 @@ import LanguageModal from 'components/LanguageModal';
 import SuperMasterAlert from 'components/SuperMasterAlert';
 import { AnimatePresence } from 'framer-motion';
 import { ArrowRight, Globe, User } from 'lucide-react';
-import * as S from './styles';
 import useUser from '../../context/UserContext';
+import * as S from './styles';
 
 function LoginPage() {
   const { t, i18n } = useTranslation();
@@ -20,7 +20,7 @@ function LoginPage() {
 
   const [canLogin, setCanLogin] = useState(false);
   const [isLogging, setIsLogging] = useState(false);
-  const [rememberCredentials, setRememberCredentials] = useState(false);
+  const [rememberCredentials, setRememberCredentials] = useState(true);
   const [languageModalOpen, setLanguageModalOpen] = useState(false);
   const [showAttentionAlert, setShowAttentionAlert] = useState(false);
   const [credentials, setCredentials] = useState({
@@ -198,6 +198,7 @@ function LoginPage() {
                 }}
                 onClick={() => setIsLogging(true)}
                 key="button-login"
+                type="submit"
               >
                 <ArrowRight
                   color={canLogin ? '#f9f9f9' : '#E8E8E8'}

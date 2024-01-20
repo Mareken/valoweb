@@ -7,9 +7,9 @@ export const Container = styled(motion.div)`
   overflow-x: hidden;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,.2) rgba(255,255,255,.7);
-	background: #141212;
-	height: 100%;
+  scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.7);
+  background: #141212;
+  height: 100%;
   will-change: opacity;
 
   &::-webkit-scrollbar {
@@ -18,18 +18,18 @@ export const Container = styled(motion.div)`
 
   &::-webkit-scrollbar-track {
     border-radius: 4px;
-    background: rgba(255,255,255,.2);
+    background: rgba(255, 255, 255, 0.2);
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 4px;
-    background: rgba(255,255,255,.7);
+    background: rgba(255, 255, 255, 0.7);
   }
 `;
 
 type RiotLogoProps = {
   hide: number;
-}
+};
 
 export const RLogo = styled(RiotLogo)<RiotLogoProps>`
   height: 40px;
@@ -37,11 +37,11 @@ export const RLogo = styled(RiotLogo)<RiotLogoProps>`
   top: 34px;
   left: 50%;
   transform: translateX(-50%);
-  opacity: ${props => props.hide};
-  transition: all .1s ease;
-  
+  opacity: ${(props) => props.hide};
+  transition: all 0.1s ease;
+
   path {
-    fill: #F0F4F0;
+    fill: #f0f4f0;
   }
 
   @media screen and (max-width: 600px) {
@@ -49,44 +49,9 @@ export const RLogo = styled(RiotLogo)<RiotLogoProps>`
   }
 `;
 
-export const Header = styled.div`
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 40px;
-  height: 100px;
-	width: 100%;
-	z-index: 10;
-
-  @media screen and (max-width: 600px) {
-    padding: 0 24px;
-  }
-`;
-
-export const RoundedButton = styled.button`
-  width: 48px;
-  height: 48px;
-  background: rgba(255,255,255,.2);
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, .13);
-  backdrop-filter: blur(1.5px);
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all .1s ease;
-  cursor: pointer;
-  color: rgba(255, 255, 255, .7);
-
-  &:hover {
-    background: rgba(255,255,255,.3);
-    color: rgba(255, 255, 255, .9);
-  }
-`;
-
 export const MyGamesSection = styled.div`
   padding: 160px 80px 120px 80px;
-  background: #1C1C1C;
+  background: #1c1c1c;
 
   @media screen and (max-width: 600px) {
     padding: 120px 24px 80px 24px;
@@ -95,7 +60,7 @@ export const MyGamesSection = styled.div`
 
 export const SectionTitle = styled.h6`
   font-weight: 600;
-	font-size: 2rem;
+  font-size: 2rem;
   color: white;
   margin-bottom: 40px;
 
@@ -107,7 +72,7 @@ export const SectionTitle = styled.h6`
 export const MyGamesContainer = styled(motion.div)`
   display: grid;
   gap: 32px;
-	grid-template-columns: repeat(auto-fill, 260px);
+  grid-template-columns: repeat(auto-fill, 260px);
 
   @media screen and (max-width: 600px) {
     display: flex;
@@ -128,7 +93,7 @@ export const AllGamesSection = styled.div`
 export const AllGamesContainer = styled(motion.div)`
   display: grid;
   gap: 40px;
-	grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 
   @media screen and (max-width: 600px) {
     display: flex;
@@ -156,17 +121,17 @@ export const SpecialEventsBanner = styled(ImgWithFallback)`
   height: auto;
   object-fit: contain;
   border-radius: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 36px;
 `;
 
 export const SpecialEventsTitle = styled.h6`
   font-weight: 600;
   font-size: 2rem;
-  color: #F0F4F0;
+  color: #f0f4f0;
   margin-bottom: 16px;
-	width: 50%;
+  width: 50%;
 
-	@media screen and (max-width: 900px) {
+  @media screen and (max-width: 900px) {
     width: 100%;
   }
 `;
@@ -185,10 +150,10 @@ export const SpecialEventsDetails = styled.div`
 
 export const SpecialEventsParagraph = styled.p`
   flex: 1;
-  color: #F0F4F0;
-  opacity: .7;
+  color: #f0f4f0;
+  opacity: 0.7;
   line-height: 1.5;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.125rem;
 `;
 
@@ -210,38 +175,27 @@ export const SpecialEventsButton = styled.a`
   border-radius: 24px;
   height: 60px;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.15rem;
-  transition: all .15s ease;
+  transition: all 0.15s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #F0F4F0;
+  color: #f0f4f0;
   text-align: center;
-  line-height: 1.15rem;
+  background: #292727;
+  gap: 12px;
 
-  &.primary {
-    background: #E60062;
-
-    &:hover {
-      background: #BE0051;
-    }
-
-    &:active {
-      background: #950040;
-    }
+  > span {
+    margin-top: 4px;
   }
 
-  &.secondary {
-    background: #292727;
+  &:hover {
+    background: #211e1f;
+  }
 
-    &:hover {
-      background: #211E1F;
-    }
-
-    &:active {
-      background: #141212;
-    }
+  &:active {
+    background: #141212;
   }
 
   @media screen and (max-width: 600px) {

@@ -97,6 +97,7 @@ function LanguageModal({
 
         {languages.map((lang) => (
           <S.ButtonChangeLanguage
+            key={lang.key}
             onClick={() => handleChangeLanguage(lang.key)}
             selected={i18n.language === lang.key}
             {...{ background }}

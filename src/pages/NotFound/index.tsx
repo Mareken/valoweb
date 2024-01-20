@@ -1,12 +1,14 @@
 import React from 'react';
 
-import valPoster from 'assets/image/val-video-poster.jpg';
+import valPoster from 'assets/image/val-video-poster.png';
 import valVideo from 'assets/video/val-client-video.mp4';
-import * as S from './styles';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import * as S from './styles';
 
 function NotFound() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   function goBack() {
     navigate('/', { replace: true });
@@ -42,7 +44,7 @@ function NotFound() {
           }
         }}
       >
-        NOTHING TO BE SEEN HERE
+        {t('notFound.title').toUpperCase()}
       </S.Title>
 
       <S.ButtonWrapper
@@ -62,7 +64,7 @@ function NotFound() {
           }
         }}
       >
-        <S.Button onClick={goBack}>Go Home</S.Button>
+        <S.Button onClick={goBack}>{t('notFound.button')}</S.Button>
       </S.ButtonWrapper>
     </S.Container>
   );

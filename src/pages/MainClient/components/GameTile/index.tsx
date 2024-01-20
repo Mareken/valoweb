@@ -29,6 +29,7 @@ interface IGameTile {
   [x: string]: any;
 }
 
+import { useNavigate } from 'react-router-dom';
 import * as S from './styles';
 
 function GameTile({
@@ -39,6 +40,7 @@ function GameTile({
 }: IGameTile) {
   const videoRef = useRef(null);
   const [videoPlaying, setVideoPlaying] = useState(false);
+  const navigate = useNavigate();
 
   const gameThumb = useMemo(() => {
     switch (game) {
@@ -62,7 +64,7 @@ function GameTile({
           src: tftClientWebp,
           fallback: tftClientPng
         };
-      case 'val':
+      case 'valorant':
         return {
           src: valClientWebp,
           fallback: valClientPng
@@ -85,7 +87,7 @@ function GameTile({
         return 'Legends of Runeterra';
       case 'tft':
         return 'Teamfight Tactics';
-      case 'val':
+      case 'valorant':
         return 'VALORANT';
       default:
         return 'No game found';
@@ -102,7 +104,7 @@ function GameTile({
         return <LorClientIcon />;
       case 'tft':
         return <TftClientIcon />;
-      case 'val':
+      case 'valorant':
         return <ValClientIcon />;
       default:
         return 'No game found';
@@ -113,7 +115,7 @@ function GameTile({
     switch (game) {
       case 'lol':
       case 'tft':
-      case 'val':
+      case 'valorant':
         return 'Instalado';
       default:
         return null;
@@ -126,7 +128,7 @@ function GameTile({
         return 'linear-gradient(90deg, #2B8EC3 0%, #0EBFDF 100%)';
       case 'tft':
         return 'linear-gradient(90deg, #FF8326 0%, #FFB226 100%)';
-      case 'val':
+      case 'valorant':
         return 'linear-gradient(90deg, #FF3945 0%, #FF7663 100%)';
       default:
         return null;
@@ -139,7 +141,7 @@ function GameTile({
         return lolClientVideo;
       case 'tft':
         return tftClientVideo;
-      case 'val':
+      case 'valorant':
         return valClientVideo;
       default:
         return null;
@@ -155,10 +157,15 @@ function GameTile({
     setVideoPlaying(false);
   }, []);
 
+  const goToGamePage = () => {
+    navigate(`/game/${game}`);
+  };
+
   return (
     <S.GameTile
       onMouseEnter={useVideo ? playVideo : null}
       onMouseLeave={useVideo ? pauseVideo : null}
+      onClick={goToGamePage}
       {...props}
     >
       <S.GameThumb gameName={game}>

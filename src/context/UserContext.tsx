@@ -29,9 +29,10 @@ function UserProvider({ children }) {
     () => ({
       user,
       signIn,
-      signOut
+      signOut,
+      setUser
     }),
-    [user, signIn, signOut]
+    [user, signIn, signOut, setUser]
   );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
@@ -48,3 +49,4 @@ export default function useUser() {
 }
 
 export { UserProvider };
+

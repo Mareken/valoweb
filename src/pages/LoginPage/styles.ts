@@ -38,7 +38,7 @@ export const WrapperDiv = styled(motion.div)`
 
 export const Headline = styled.h2`
   font-size: 1.75rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #191307;
   margin: 64px 0 24px 0;
   text-align: center;
@@ -57,83 +57,19 @@ export const LoginAltButtons = styled.div`
   margin-bottom: 16px;
 `;
 
-export const RememberMeCheckbox = styled.label`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  width: fit-content;
-`;
-
-export const CheckboxBox = styled.div`
-  flex: 0 0 20px;
-  height: 20px;
-  border-radius: 6px;
-  background: #EDEDED;
-  margin-right: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  transition: all .15s ease;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    background: white;
-    height: 2px;
-    opacity: 0;
-    transition: opacity .15s ease;
-  }
-
-  &::before {
-    width: 25%;
-    border-radius: 1px;
-    transform: translate(-55%, 60%) rotate(45deg);
-  }
-
-  &::after {
-    width: 50%;
-    border-radius: 1px;
-    transform: translate(15%, 20%) rotate(-45deg);
-  }
-`;
-
-export const CheckboxInput = styled.input`
-  display: none;
-
-  &:checked {
-    + ${CheckboxBox} {
-      background: #E60062;
-
-      &::before, &::after {
-        opacity: 1;
-      }
-    }
-  }
-`;
-
-export const CheckboxLabel = styled.span`
-  color: #191307;
-	margin-left: 4px;
-  flex: 1;
-  font-weight: 600;
-  white-space: nowrap;
-`;
-
 export const ButtonLogin = styled(motion.button)`
   width: 72px;
   height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #E60062;
+  background: #e60062;
   align-self: center;
   border-radius: 20px;
-  border: 2px solid #E60062;
+  border: 2px solid #e60062;
   cursor: pointer;
-  transition: all .15s ease;
-	margin-bottom: 40px;
+  transition: all 0.15s ease;
+  margin-bottom: 40px;
 
   .button-login-icon {
     color: white;
@@ -141,11 +77,11 @@ export const ButtonLogin = styled(motion.button)`
 
   &:disabled {
     pointer-events: none;
-    border: 2px solid #E8E8E8;
+    border: 2px solid #e8e8e8;
     background: transparent;
 
     .button-login-icon {
-      color: #E8E8E8;
+      color: #e8e8e8;
     }
   }
 `;
@@ -162,7 +98,7 @@ const loadAnimation = keyframes`
 export const LoginLoaderWrapper = styled(motion.div)`
   @extend WrapperDiv;
   position: absolute;
-  top: 50%; 
+  top: 50%;
 `;
 
 export const LoginLoader = styled.div`
@@ -170,7 +106,7 @@ export const LoginLoader = styled.div`
   height: 80px;
   border-radius: 50%;
   border: 4px solid #191307;
-  border-top-color: #E60062;
+  border-top-color: #e60062;
   animation: ${loadAnimation} 1.5s linear 2;
 `;
 
@@ -184,7 +120,7 @@ export const Footer = styled.div`
 `;
 
 export const FooterWrapper = styled.div`
-	display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -193,30 +129,30 @@ export const FooterWrapper = styled.div`
 
 export const FooterLink = styled.a`
   color: #989898;
-  font-weight: 800;
+  font-weight: 600;
   cursor: pointer;
-	font-size: .75rem;
-	text-transform: uppercase;
-	transition: all .15s ease;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
 
-	&:hover {
-		color: #191307;
-	}
-  
-  &:not(:last-child) {  
-		margin-bottom: 2px;
-	}
+  &:hover {
+    color: #191307;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 2px;
+  }
 `;
 
 export const FooterText = styled.span`
   position: absolute;
   right: 0;
   color: #989898;
-  font-weight: 800;
-  opacity: .5;
-  font-size: .75rem;
-	text-transform: uppercase;
-	transition: all .15s ease;
+  font-weight: 600;
+  opacity: 0.5;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
   align-self: flex-end;
 `;
 
@@ -226,9 +162,9 @@ export const FooterDisclaimer = styled.span`
   margin-top: 16px;
   color: #989898;
   font-weight: 800;
-  opacity: .5;
-  font-size: .75rem;
-	text-transform: uppercase;
+  opacity: 0.5;
+  font-size: 0.75rem;
+  text-transform: uppercase;
 
   > a {
     color: inherit;
@@ -241,7 +177,7 @@ export const FooterDisclaimer = styled.span`
 export const RightSide = styled.div`
   flex: 1;
   height: 100%;
-  background: url('src/assets/image/png/client-bg.png');
+  background: url('/image/client-bg.png');
   background-size: cover;
   background-position: 10% center;
 `;
@@ -257,20 +193,20 @@ export const RightSideButtons = styled.div`
 
 type RoundedButtonProps = {
   highlight?: boolean;
-}
+};
 
 export const RoundedButton = styled.button<RoundedButtonProps>`
   width: 48px;
   height: 48px;
-  background: ${rgba('#f9f9f9', .7)};
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, .13);
+  background: ${rgba('#f9f9f9', 0.7)};
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.13);
   backdrop-filter: blur(1.5px);
   border-radius: 16px;
   display: flex;
   align-items: center;
   margin-left: 16px;
   justify-content: center;
-  transition: all .1s ease;
+  transition: all 0.1s ease;
 
   &:hover {
     background: ${rgba('#f9f9f9', 1)};
@@ -279,8 +215,10 @@ export const RoundedButton = styled.button<RoundedButtonProps>`
   &:last-of-type {
     cursor: pointer;
 
-    ${props => props.highlight && css`
-        background: rgba(255,255,255,.3);
-    `}
+    ${(props) =>
+      props.highlight &&
+      css`
+        background: rgba(255, 255, 255, 0.3);
+      `}
   }
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
-import useUser from '../context/UserContext';
 import { Navigate, Outlet } from 'react-router-dom';
+import useUser from '../context/UserContext';
 
 interface IProtectedRoute {
   children?: React.ReactNode;
@@ -9,7 +9,7 @@ interface IProtectedRoute {
 function ProtectedRoute({ children }: IProtectedRoute) {
   const { user } = useUser();
 
-  if (!user) {
+  if (!user && !localStorage.getItem('valoweb')) {
     return <Navigate to="/" replace />;
   }
 

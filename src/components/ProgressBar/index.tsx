@@ -12,6 +12,7 @@ interface IProgressBarProps {
   labelColor?: string;
   spinnerMode?: boolean;
   spinnerSpeed?: number;
+  className?: string;
 }
 
 import * as S from './styles';
@@ -27,7 +28,8 @@ function ProgressBar({
   label = `l`,
   labelColor = `#333`,
   spinnerMode = false,
-  spinnerSpeed = 1
+  spinnerSpeed = 1,
+  className
 }: IProgressBarProps) {
   const center = useMemo(() => size / 2, [size]);
   const radius = useMemo(
@@ -47,45 +49,43 @@ function ProgressBar({
   );
 
   return (
-    <>
-      <S.Wrapper size={size}>
-        <S.Svg size={size}>
-          <S.CircleTrack
-            cx={center}
-            cy={center}
-            fill="transparent"
-            r={radius}
-            stroke={trackColor}
-            strokeWidth={trackWidth}
-          />
-          <S.CircleIndicator
-            cx={center}
-            cy={center}
-            fill="transparent"
-            r={radius}
-            stroke={indicatorColor}
-            strokeWidth={indicatorWidth}
-            strokeDasharray={dashArray}
-            strokeDashoffset={dashOffset}
-            strokeLinecap={indicatorCap}
-            isSpinner={spinnerMode}
-            animationDuration={`${animationDuration}s`}
-          />
-        </S.Svg>
+    <S.Wrapper size={size} className={className}>
+      <S.Svg width={`${size}px`} height={`${size}px`}>
+        <S.CircleTrack
+          cx={center}
+          cy={center}
+          fill="transparent"
+          r={radius}
+          stroke={trackColor}
+          strokeWidth={trackWidth}
+        />
+        <S.CircleIndicator
+          cx={center}
+          cy={center}
+          fill="transparent"
+          r={radius}
+          stroke={indicatorColor}
+          strokeWidth={indicatorWidth}
+          strokeDasharray={dashArray}
+          strokeDashoffset={dashOffset}
+          strokeLinecap={indicatorCap}
+          isSpinner={spinnerMode}
+          animationDuration={`${animationDuration}s`}
+        />
+      </S.Svg>
 
-        {!hideLabel && (
-          <S.LabelContainer labelColor={labelColor}>
-            <S.LabelLoading>{label}</S.LabelLoading>
+      {!hideLabel && (
+        <S.LabelContainer labelColor={labelColor}>
+          <S.LabelLoading>{label}</S.LabelLoading>
 
-            {!spinnerMode && (
-              <S.LabelProgress>
-                {`${progress > 100 ? 100 : progress}%`}
-              </S.LabelProgress>
-            )}
-          </S.LabelContainer>
-        )}
-      </S.Wrapper>
-    </>
+          {!spinnerMode && (
+            <S.LabelProgress>
+              {`${progress > 100 ? 100 : progress}%`}
+            </S.LabelProgress>
+          )}
+        </S.LabelContainer>
+      )}
+    </S.Wrapper>
   );
 }
 

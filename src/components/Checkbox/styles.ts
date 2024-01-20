@@ -11,13 +11,13 @@ export const CheckboxBox = styled.div`
   flex: 0 0 20px;
   height: 20px;
   border-radius: 6px;
-  background: #EDEDED;
+  background: #ededed;
   margin-right: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  transition: all .15s ease;
+  transition: all 0.15s ease;
 
   &::before,
   &::after {
@@ -26,7 +26,7 @@ export const CheckboxBox = styled.div`
     background: white;
     height: 2px;
     opacity: 0;
-    transition: opacity .15s ease;
+    transition: opacity 0.15s ease;
   }
 
   &::before {
@@ -47,9 +47,10 @@ export const CheckboxInput = styled.input`
 
   &:checked {
     + ${CheckboxBox} {
-      background: #E60062;
+      background: #e60062;
 
-      &::before, &::after {
+      &::before,
+      &::after {
         opacity: 1;
       }
     }
@@ -58,8 +59,9 @@ export const CheckboxInput = styled.input`
 
 export const CheckboxLabel = styled.span`
   color: #191307;
-	margin-left: 4px;
+  margin-top: 2px;
+  margin-left: 4px;
   flex: 1;
-  font-weight: 600;
+  font-weight: 500;
   white-space: nowrap;
 `;

@@ -1,11 +1,20 @@
 import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import Backend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import Backend from 'i18next-http-backend';
+import { initReactI18next } from 'react-i18next';
 
 const options = {
   // order and from where user language should be detected
-  order: ['querystring', 'cookie', 'localStorage', 'sessionStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
+  order: [
+    'querystring',
+    'cookie',
+    'localStorage',
+    'sessionStorage',
+    'navigator',
+    'htmlTag',
+    'path',
+    'subdomain'
+  ],
 
   // keys or params to lookup language from
   lookupQuerystring: 'lng',
@@ -28,7 +37,7 @@ const options = {
 
   // optional set cookie options, reference:[MDN Set-Cookie docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie)
   cookieOptions: { path: '/', sameSite: true }
-}
+};
 
 const languageDetector = new LanguageDetector(null, options);
 languageDetector.init(options);
@@ -39,10 +48,10 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'pt-BR',
-    debug: true,
+    debug: false,
 
     interpolation: {
-      escapeValue: false,
+      escapeValue: false
     },
 
     react: {
@@ -51,7 +60,7 @@ i18n
       transEmptyNodeValue: '',
       transSupportBasicHtmlNodes: true,
       transKeepBasicHtmlNodesFor: ['br', 'strong', 'i'],
-      useSuspense: true,
+      useSuspense: true
     }
   });
 

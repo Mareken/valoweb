@@ -1,23 +1,18 @@
-import { Globe, Power } from 'lucide-react';
 import React, { useCallback, useMemo, useState } from 'react';
-
-import convergenceBannerPng from 'assets/image/png/convergence.png';
-import convergenceBannerWebp from 'assets/image/webp/convergence.webp';
-import LanguageModal from 'components/LanguageModal';
-import { AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { BsApple, BsGooglePlay } from 'react-icons/bs';
+
+import specialNewsBannerPng from 'assets/image/png/riot-mobile.png';
+import specialNewsBannerWebp from 'assets/image/webp/riot-mobile.webp';
 import GameTile from './components/GameTile';
 import * as S from './styles';
-import useUser from '../../context/UserContext';
 
 function MainClient() {
   const { t, i18n } = useTranslation();
-  const { signOut } = useUser();
 
-  const gamesList = ['lol', 'tft', 'val'];
-  const gamesGrid = ['lol', 'wr', 'lor', 'tft', 'val'];
+  const gamesList = ['lol', 'tft', 'valorant'];
+  const gamesGrid = ['lol', 'wr', 'lor', 'tft', 'valorant'];
   const [shouldLogoHide, setShouldLogoHide] = useState(false);
-  const [languageModalOpen, setLanguageModalOpen] = useState(false);
 
   const handleContainerScroll = useCallback(
     (evt: React.UIEvent<HTMLDivElement>) => {
@@ -32,7 +27,7 @@ function MainClient() {
     []
   );
 
-  const convergenceLink = useMemo(() => {
+  const specialNewsLink = useMemo(() => {
     switch (i18n.language) {
       case 'pt-BR':
         return 'https://convrgencegame.com/pt-br/';
@@ -80,15 +75,6 @@ function MainClient() {
     >
       <S.RLogo hide={shouldLogoHide ? 0 : 1} />
 
-      <S.Header>
-        <S.RoundedButton onClick={signOut}>
-          <Power />
-        </S.RoundedButton>
-        <S.RoundedButton onClick={() => setLanguageModalOpen(true)}>
-          <Globe />
-        </S.RoundedButton>
-      </S.Header>
-
       <S.MyGamesSection>
         <S.SectionTitle>{t('mainClient.myGames')}</S.SectionTitle>
         <S.MyGamesContainer>
@@ -127,49 +113,42 @@ function MainClient() {
 
       <S.SpecialEventsSection>
         <S.SectionTitle>
-          {t('mainClient.convergenceSectionTitle')}
+          {t('mainClient.specialNewsSectionTitle')}
         </S.SectionTitle>
         <S.SpecialEventsBanner
-          src={convergenceBannerWebp}
-          fallback={convergenceBannerPng}
+          src={specialNewsBannerWebp}
+          fallback={specialNewsBannerPng}
         />
         <S.SpecialEventsTitle>
-          {t('mainClient.convergenceTitle')}
+          {t('mainClient.specialNewsTitle')}
         </S.SpecialEventsTitle>
         <S.SpecialEventsDetails>
           <S.SpecialEventsParagraph>
-            {t('mainClient.convergenceContent')}
+            {t('mainClient.specialNewsContent')}
           </S.SpecialEventsParagraph>
 
           <S.SpecialEventsButtons>
             <S.SpecialEventsButton
-              href={`${convergenceLink}purchase/`}
+              href={`${specialNewsLink}purchase/`}
               target="_blank"
               rel="noreferrer"
               className="primary"
             >
-              {t('mainClient.convergenceBuyNow')}
+              <BsApple size={18} />
+              <span>{t('mainClient.specialNewsBtn')}</span>
             </S.SpecialEventsButton>
             <S.SpecialEventsButton
-              href={convergenceLink}
+              href={specialNewsLink}
               target="_blank"
               rel="noreferrer"
               className="secondary"
             >
-              {t('mainClient.convergence')}
+              <BsGooglePlay size={18} />
+              <span>{t('mainClient.specialNewsBtn2')}</span>
             </S.SpecialEventsButton>
           </S.SpecialEventsButtons>
         </S.SpecialEventsDetails>
       </S.SpecialEventsSection>
-
-      <AnimatePresence mode="wait">
-        {languageModalOpen && (
-          <LanguageModal
-            onClose={() => setLanguageModalOpen(false)}
-            theme="dark"
-          />
-        )}
-      </AnimatePresence>
     </S.Container>
   );
 }

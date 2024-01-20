@@ -101,7 +101,11 @@ function Input({
       </S.Label>
 
       {isPasswordField && (
-        <S.ButtonTogglePasswordVisibility onClick={togglePasswordVisibility}>
+        <S.ButtonTogglePasswordVisibility
+          onClick={togglePasswordVisibility}
+          aria-hidden
+          tabIndex={0}
+        >
           {showPassword ? (
             <Eye size={24} color="#191307" />
           ) : (
